@@ -2,6 +2,7 @@
 
 ## IMPORTANTE: software apenas para fins de demonstração
 
+
  - Clonar esse repo
  ````
 git clone xxxxxxx
@@ -26,7 +27,11 @@ Windows
 pip install -r requirements.txt
  ```
  - Definir variáveis de ambiente via .env
-
+ - required:
+ ```
+  sudo apt update
+  sudo apt install ffmpeg
+ ```
  - Executar app:
  ```
 xxxxxxxxx

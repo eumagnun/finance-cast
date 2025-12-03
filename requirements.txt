@@ -1,3 +1,4 @@
 ﻿google-adk==1.19.0
 google-genai
 pydub
+google-cloud-texttospeech
