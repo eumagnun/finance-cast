@@ -2,3 +2,4 @@
 google-genai
 pydub
 google-cloud-texttospeech
+google-cloud-storage

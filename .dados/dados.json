@@ -1,0 +1,55 @@
+﻿
+{
+ "investidor_id": 12345,
+ "data_extracao": "2025-10-08",
+ "dados_mercado": {
+  "empresas_listadas": [
+   { "ticker": "VALE3", "nome_empresa": "Vale S.A.", "setor": "Mineração", "ano_fiscal": 2023, "lucro_liquido_brl": 85700000000, "margem_liquida": 0.407 },
+   { "ticker": "VALE3", "nome_empresa": "Vale S.A.", "setor": "Mineração", "ano_fiscal": 2022, "lucro_liquido_brl": 95900000000, "margem_liquida": 0.425 },
+   { "ticker": "VALE3", "nome_empresa": "Vale S.A.", "setor": "Mineração", "ano_fiscal": 2021, "lucro_liquido_brl": 121100000000, "margem_liquida": 0.431 },
+   { "ticker": "PETR4", "nome_empresa": "Petrobras", "setor": "Petróleo e Gás", "ano_fiscal": 2023, "lucro_liquido_brl": 190100000000, "margem_liquida": 0.345 },
+   { "ticker": "PETR4", "nome_empresa": "Petrobras", "setor": "Petróleo e Gás", "ano_fiscal": 2022, "lucro_liquido_brl": 188300000000, "margem_liquida": 0.293 },
+   { "ticker": "ITUB4", "nome_empresa": "Itaú Unibanco", "setor": "Financeiro", "ano_fiscal": 2023, "lucro_liquido_brl": 35600000000, "margem_liquida": 0.173 },
+   { "ticker": "ITUB4", "nome_empresa": "Itaú Unibanco", "setor": "Financeiro", "ano_fiscal": 2022, "lucro_liquido_brl": 30800000000, "margem_liquida": 0.163 },
+   { "ticker": "MGLU3", "nome_empresa": "Magazine Luiza", "setor": "Varejo", "ano_fiscal": 2023, "lucro_liquido_brl": -150000000, "margem_liquida": -0.004 },
+   { "ticker": "MGLU3", "nome_empresa": "Magazine Luiza", "setor": "Varejo", "ano_fiscal": 2022, "lucro_liquido_brl": 120000000, "margem_liquida": 0.003 },
+   { "ticker": "WEGE3", "nome_empresa": "WEG S.A.", "setor": "Bens de Capital", "ano_fiscal": 2023, "lucro_liquido_brl": 5700000000, "margem_liquida": 0.175 },
+   { "ticker": "WEGE3", "nome_empresa": "WEG S.A.", "setor": "Bens de Capital", "ano_fiscal": 2022, "lucro_liquido_brl": 4200000000, "margem_liquida": 0.140 }
+  ],
+  "historico_cotacoes": [
+   { "data": "2025-10-08", "ticker": "VALE3", "preco_fechamento_brl": 65.80 },
+   { "data": "2025-10-07", "ticker": "VALE3", "preco_fechamento_brl": 65.50 },
+   { "data": "2025-09-08", "ticker": "VALE3", "preco_fechamento_brl": 62.10 },
+   { "data": "2025-10-08", "ticker": "PETR4", "preco_fechamento_brl": 38.90 },
+   { "data": "2025-10-07", "ticker": "PETR4", "preco_fechamento_brl": 38.20 },
+   { "data": "2025-09-08", "ticker": "PETR4", "preco_fechamento_brl": 37.50 },
+   { "data": "2025-10-08", "ticker": "ITUB4", "preco_fechamento_brl": 32.40 },
+   { "data": "2025-10-07", "ticker": "ITUB4", "preco_fechamento_brl": 32.10 },
+   { "data": "2025-09-08", "ticker": "ITUB4", "preco_fechamento_brl": 31.00 },
+   { "data": "2025-10-08", "ticker": "MGLU3", "preco_fechamento_brl": 2.45 },
+   { "data": "2025-10-07", "ticker": "MGLU3", "preco_fechamento_brl": 2.50 },
+   { "data": "2025-09-08", "ticker": "MGLU3", "preco_fechamento_brl": 2.90 }
+  ]
+ },
+ "dados_investidor": {
+  "carteira_investidor": [
+   { "tipo_ativo": "Ação", "ticker_ou_id": "PETR4", "quantidade": 500, "preco_medio_brl": 34.50, "valor_total_brl": 17250.00 },
+   { "tipo_ativo": "Ação", "ticker_ou_id": "ITUB4", "quantidade": 1000, "preco_medio_brl": 29.80, "valor_total_brl": 29800.00 },
+   { "tipo_ativo": "Ação", "ticker_ou_id": "MGLU3", "quantidade": 2000, "preco_medio_brl": 3.10, "valor_total_brl": 6200.00 },
+   { "tipo_ativo": "Tesouro Direto", "ticker_ou_id": "TESOURO SELIC 2029", "quantidade": 2.5, "preco_medio_brl": 14500.00, "valor_total_brl": 36250.00 },
+   { "tipo_ativo": "FII", "ticker_ou_id": "HGLG11", "quantidade": 150, "preco_medio_brl": 165.20, "valor_total_brl": 24780.00 }
+  ],
+  "transacoes_investidor": [
+   { "data_transacao": "2025-10-01", "tipo_transacao": "VENDA", "ticker": "VALE3", "quantidade": 100, "preco_unitario_brl": 65.10, "valor_total_brl": 6510.00 },
+   { "data_transacao": "2025-09-15", "tipo_transacao": "VENDA", "ticker": "MGLU3", "quantidade": 500, "preco_unitario_brl": 2.80, "valor_total_brl": 1400.00 },
+   { "data_transacao": "2025-08-20", "tipo_transacao": "COMPRA", "ticker": "PETR4", "quantidade": 200, "preco_unitario_brl": 36.10, "valor_total_brl": 7220.00 },
+   { "data_transacao": "2025-06-10", "tipo_transacao": "COMPRA", "ticker": "ITUB4", "quantidade": 1000, "preco_unitario_brl": 29.80, "valor_total_brl": 29800.00 }
+  ],
+  "vencimentos_investidor": [
+   { "id_investimento": "CDB-BANCO DO BRASIL 100% CDI", "nome_investimento": "CDB Banco do Brasil 110% CDI", "data_aplicacao": "2023-12-01", "data_vencimento": "2025-12-01", "valor_aplicado_brl": 25000.00 }
+  ],
+  "metas_investidor": [
+   { "nome_meta": "Aposentadoria", "objetivo_valor_brl": 2000000.00, "data_alvo": "2045-12-31", "valor_atual_brl": 150000.00 }
+  ]
+ }
+}

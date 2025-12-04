@@ -4,7 +4,7 @@ from main_agent.agent import root_agent
 from vertexai import agent_engines
 from vertexai.preview import reasoning_engines
 
-vertexai.init(project="[SEU_PROJETO]", staging_bucket="gs://000-staging-adk")
+vertexai.init(project="project-poc-purple", staging_bucket="gs://000-staging-adk")
 
 app = reasoning_engines.AdkApp(
     agent=root_agent,
@@ -12,7 +12,7 @@ app = reasoning_engines.AdkApp(
 )
 
 remote_app = agent_engines.create(
-    display_name="BB Cast",
+    display_name="FinanceCast",
     agent_engine=app,
     requirements=[
         "google-cloud-aiplatform[adk,agent_engines]",

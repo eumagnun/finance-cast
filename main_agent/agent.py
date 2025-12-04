@@ -1,14 +1,18 @@
 ﻿import logging
 import os
+import shutil
 from google.cloud import texttospeech
 from google.adk.agents import LlmAgent, SequentialAgent
 from google.adk.tools import load_artifacts
+from google.cloud import storage
 from pydub import AudioSegment
 
 # --- 1. CONFIGURAÇÕES PRINCIPAIS ---
 
 # ID do seu projeto Google Cloud
 PROJECT_ID = "project-poc-purple"  # Altere para o seu Project ID
+BUCKET_NAME = "demo-podcast"  # <--- DEFINA SEU BUCKET AQUI
+PASTA_NO_BUCKET = "podcasts_gerados"     # Pasta dentro do bucket (opcional)
 
 # Configurações do Text-to-Speech
 MODELO_TTS = "gemini-2.5-pro-tts"
@@ -81,7 +85,37 @@ def concatenar_audios(lista_de_arquivos, arquivo_final):
         proximo_audio = AudioSegment.from_wav(nome_arquivo)
         audio_combinado += proximo_audio
     audio_combinado.export(arquivo_final, format="wav")
-    print(f"\n✅ Sucesso! O podcast foi montado e salvo como '{arquivo_final}'")
+    print(f"\n✅ Áudio concatenado localmente em '{arquivo_final}' (pronto para upload)")
+    return True
+
+def enviar_para_bucket(arquivo_local, bucket_name, destino_blob):
+    try:
+        storage_client = storage.Client()
+        bucket = storage_client.bucket(bucket_name)
+        blob = bucket.blob(destino_blob)
+        
+        print(f"Enviando '{arquivo_local}' para 'gs://{bucket_name}/{destino_blob}'...")
+        blob.upload_from_filename(arquivo_local)
+        
+        print(f"✅ Upload concluído com sucesso!")
+        return True
+    except Exception as e:
+        print(f"❌ Erro ao enviar para o bucket: {e}")
+        return False
+
+def limpar_arquivos_temporarios():
+    """Remove a pasta de segmentos e o arquivo final local."""
+    print("\nIniciando limpeza de arquivos temporários...")
+    
+    # 1. Remove a pasta de segmentos e todo seu conteúdo
+    if os.path.exists(PASTA_SAIDA):
+        shutil.rmtree(PASTA_SAIDA)
+        print(f"🗑️  Pasta '{PASTA_SAIDA}' removida.")
+    
+    # 2. Remove o arquivo final local (pois já está no bucket)
+    if os.path.exists(ARQUIVO_FINAL):
+        os.remove(ARQUIVO_FINAL)
+        print(f"🗑️  Arquivo local '{ARQUIVO_FINAL}' removido.")
 
 def gerar_podcast(TEXTO_ENTRADA):
     os.environ["GCLOUD_PROJECT"] = PROJECT_ID
@@ -112,7 +146,19 @@ def gerar_podcast(TEXTO_ENTRADA):
             arquivos_de_audio_gerados.append(arquivo)
 
     if len(arquivos_de_audio_gerados) == total_segmentos:
-        concatenar_audios(arquivos_de_audio_gerados, ARQUIVO_FINAL)
+            # 1. Concatena
+            sucesso_concat = concatenar_audios(arquivos_de_audio_gerados, ARQUIVO_FINAL)
+            
+            # 2. Faz Upload
+            if sucesso_concat:
+                caminho_blob = f"{PASTA_NO_BUCKET}/{ARQUIVO_FINAL}"
+                sucesso_upload = enviar_para_bucket(ARQUIVO_FINAL, BUCKET_NAME, caminho_blob)
+                
+                # 3. Limpeza (apenas se o upload deu certo, para segurança)
+                if sucesso_upload:
+                    limpar_arquivos_temporarios()
+                else:
+                    print("⚠️  Limpeza abortada: O upload falhou, mantendo arquivos locais para backup.")
     else:
         print("\n❌ A concatenação foi cancelada devido a erros na geração de um ou mais segmentos.")
 
@@ -130,7 +176,7 @@ gerador_resumo_agent = LlmAgent(
 )
 
 gerador_podcast_agent = LlmAgent(
-    name="advogado_agent",
+    name="gerador_podcast_agent",
     model="gemini-2.5-flash",
     instruction="""
     Você é um especialista em criar podcast.
