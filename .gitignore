@@ -2,3 +2,4 @@
 main_agent/.env
 __pycache__/
 .podcast_segmentos
+main_agent_tmp*

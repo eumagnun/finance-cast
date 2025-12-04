@@ -211,7 +211,6 @@ gerador_podcast_agent = LlmAgent(
     tools=[gerar_podcast],
 )
 
-
 pipeline_agent = SequentialAgent(
     name="pipeline_agent",
     sub_agents=[gerador_resumo_agent, gerador_podcast_agent],
