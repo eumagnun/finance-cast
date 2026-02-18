@@ -40,10 +40,10 @@ Caso queira gerar uma imagem para implantação no Cloud Run:
 
  - Gerar imagem:
  ````
-docker build -t us-central1-docker.pkg.dev/project-poc-purple/demos/demo_themis.
+docker build -t us-central1-docker.pkg.dev/project-poc-purple/demos/finance-cast.
  ````
  - Enviar imagem para o Registry:
  ````
-docker push us-central1-docker.pkg.dev/project-poc-purple/demos/demo_themis
+docker push us-central1-docker.pkg.dev/project-poc-purple/demos/finance-cast
  ````
 
