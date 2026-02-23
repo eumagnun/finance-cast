@@ -1,5 +1,6 @@
-﻿google-adk==1.19.0
+﻿google-adk
 google-genai
 pydub
+audioop-lts
 google-cloud-texttospeech
 google-cloud-storage

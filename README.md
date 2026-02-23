@@ -9,7 +9,7 @@ git clone xxxxxxx
  ````
  - Criar ambiente virtual:
 ```bash
-python3 -m venv .venv
+python -m venv .venv
 ```
  - Ativar ambiente virtual:
 

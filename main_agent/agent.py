@@ -10,9 +10,12 @@ from datetime import datetime
 
 # --- 1. CONFIGURAÇÕES PRINCIPAIS ---
 
+CLIENT_NAME = os.getenv("CLIENT_NAME", "Daniel")
+COMPANY_NAME = os.getenv("COMPANY_NAME", "Banco Amaral")
+
 # ID do seu projeto Google Cloud
-PROJECT_ID = "project-poc-purple"  # Altere para o seu Project ID
-BUCKET_NAME = "demo-podcast"  # <--- DEFINA SEU BUCKET AQUI
+PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
+BUCKET_NAME = os.getenv("BUCKET_NAME")
 PASTA_NO_BUCKET = "podcasts_gerados"     # Pasta dentro do bucket (opcional)
 
 # Configurações do Text-to-Speech
@@ -188,20 +191,22 @@ def gerar_podcast(TEXTO_ENTRADA):
 
 gerador_resumo_agent = LlmAgent(
     name="gerador_resumo_agent",
-    model="gemini-2.5-flash",
-    instruction="""
+    model="gemini-3-flash-preview",
+    instruction=f"""
         Você é um especialista financeiro 
         Gere um resumo com base no conteudo disponibilizado.
-        O mesmo representa fatos ocorridos sobre assets contidas na carteira de investimentos de um investidor do Banco do Brasil.
-        O resumo deve ser gerado como um podcast de uma pessoa falando com o cliente chamado Daniel.
+        O mesmo representa fatos ocorridos sobre assets contidas na carteira de investimentos de um investidor do {COMPANY_NAME}.
+        O resumo deve ser gerado como um podcast de uma pessoa falando com o cliente chamado {CLIENT_NAME}.
         O resumo deve ser composto de saudação seguido de 3 fatos mais relevantes
+        IMPORTANTE: o conteúdo gerado deve ser composto apenas de falas prontas para serem lidas.
+        Nunca faça menções a necessidade de trilha sonora ou titulos para o podcast
         """,
     tools=[load_artifacts],
 )
 
 gerador_podcast_agent = LlmAgent(
     name="gerador_podcast_agent",
-    model="gemini-2.5-flash",
+    model="gemini-3-flash-preview",
     instruction="""
         Você é um especialista em criar podcast.
         Você espera que te encaminhem um roteiro para o podcast.

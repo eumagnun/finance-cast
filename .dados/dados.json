@@ -46,7 +46,7 @@
    { "data_transacao": "2025-06-10", "tipo_transacao": "COMPRA", "ticker": "ITUB4", "quantidade": 1000, "preco_unitario_brl": 29.80, "valor_total_brl": 29800.00 }
   ],
   "vencimentos_investidor": [
-   { "id_investimento": "CDB-BANCO DO BRASIL 100% CDI", "nome_investimento": "CDB Banco do Brasil 110% CDI", "data_aplicacao": "2023-12-01", "data_vencimento": "2025-12-01", "valor_aplicado_brl": 25000.00 }
+   { "id_investimento": "CDB-BANCO AMARAL 100% CDI", "nome_investimento": "CDB AMARAL110% CDI", "data_aplicacao": "2023-12-01", "data_vencimento": "2025-12-01", "valor_aplicado_brl": 25000.00 }
   ],
   "metas_investidor": [
    { "nome_meta": "Aposentadoria", "objetivo_valor_brl": 2000000.00, "data_alvo": "2045-12-31", "valor_atual_brl": 150000.00 }
