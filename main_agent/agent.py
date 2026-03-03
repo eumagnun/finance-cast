@@ -21,6 +21,7 @@ PASTA_NO_BUCKET = "podcasts_gerados"     # Pasta dentro do bucket (opcional)
 # Configurações do Text-to-Speech
 MODELO_TTS = "gemini-2.5-pro-tts"
 CODIGO_IDIOMA = "pt-br"
+SOTAQUE = os.getenv("SOTAQUE")
 
 # Defina os participantes e suas vozes
 LOCUTOR_1 = {"alias": "Assessor", "voz": "Algenib"}
@@ -52,9 +53,10 @@ def segmentar_texto(texto, limite):
 
 def gerar_audio(client, locutor, texto, indice):
     try:
+        
         nome_arquivo = os.path.join(PASTA_SAIDA, f"segmento_{indice:03d}.wav")
         print(f"Gerando áudio para o segmento {indice} com a voz '{locutor['voz']}'...")
-        synthesis_input = texttospeech.SynthesisInput(text=texto)
+        synthesis_input = texttospeech.SynthesisInput(text=texto,)
         voice = texttospeech.VoiceSelectionParams(
             language_code=CODIGO_IDIOMA, name=locutor["voz"], model_name=MODELO_TTS
         )
