@@ -10,8 +10,8 @@ from datetime import datetime
 
 # --- 1. CONFIGURAÇÕES PRINCIPAIS ---
 
-CLIENT_NAME = os.getenv("CLIENT_NAME", "Daniel")
-COMPANY_NAME = os.getenv("COMPANY_NAME", "Banco Amaral")
+CLIENT_NAME = os.getenv("CLIENT_NAME")
+COMPANY_NAME = os.getenv("COMPANY_NAME")
 
 # ID do seu projeto Google Cloud
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
@@ -33,13 +33,6 @@ ARQUIVO_FINAL = "podcast_final.wav"
 # Limite de caracteres por chamada de API (o limite oficial é 5000)
 LIMITE_CARACTERES_POR_CHAMADA = 4500
 
-# --- 1a. CONFIGURAÇÕES DE CUSTO ---
-PRECO_POR_MILHAO_TEXT_TOKENS = 1.00
-PRECO_POR_MILHAO_AUDIO_TOKENS = 20.00
-AUDIO_TOKENS_POR_SEGUNDO = 25
-# Suposição: 1 token de texto ~= 4 caracteres.
-# Esta é uma aproximação comum para modelos de linguagem.
-CARACTERES_POR_TEXT_TOKEN = 4
 
 def segmentar_texto(texto, limite):
     if len(texto) <= limite:
